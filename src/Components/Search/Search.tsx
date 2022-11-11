@@ -15,6 +15,7 @@ const Search = ({ setSearchResults, setSearchSubmited }: Props) => {
   //Submit search by pressing the enter while on input
   const keyUp = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
+    console.log(e.key);
     if (e.key === 'Enter' && inputValue) {
       setSearchSubmited(inputValue);
       const results = await fetching.byWordsInTitle(inputValue);

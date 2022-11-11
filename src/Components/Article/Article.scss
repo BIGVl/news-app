@@ -10,9 +10,7 @@ article {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &.imageless {
-        height: 50vh;
-    }
+    
     
 }
 
@@ -59,5 +57,5 @@ h2{
 @media (min-width:1500px) {
     article {
      height: 50vh;
-    }
+    } 
 }
