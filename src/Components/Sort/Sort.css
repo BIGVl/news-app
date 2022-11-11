@@ -1,0 +1,63 @@
+#sort-container {
+    position: relative ;
+    display: flex;
+    align-items: flex-end;
+}
+
+#sort-icon {
+    height: 80%;
+filter: invert(50%) sepia(0%) saturate(1339%) hue-rotate(140deg) brightness(93%) contrast(87%);
+}
+
+#sort-menu {
+    background-color: rgb(210, 210,210);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 100%;
+    box-shadow: 1px 1px 10px 1px rgb(100,100,100);
+}
+
+#oldest,
+#newest {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: .5rem .8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+
+#separator {
+    
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+
+#oldest::after,
+#newest::after {
+    content: "";
+    background: black;
+    display: block;
+    position: absolute;
+    padding: 2rem 4rem;
+
+    bottom: 0%;
+    left: 0%;
+    opacity: 0;
+    transition: all 0.4s;
+    pointer-events: none;
+}
+
+
+#oldest:active::after,
+#newest:active::after {
+    
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    transition: 0s;
+}

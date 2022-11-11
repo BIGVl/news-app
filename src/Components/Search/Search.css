@@ -1,31 +1,32 @@
 #search-container {
 
     width: 80%;
+    display: flex;
+    justify-content: center;
 }
 
 #search-input {
 
-    width: 100%;
+    width: min(100%,35rem);
     height: 3rem;
     border-radius: 10px;
     outline: none;  
     border: none;
     padding: .8rem;
-    font-size: 1rem;
-    background-color: black;
+    font-size: 1.1rem;
+    background-color: rgb(40, 40, 40);
     color: white;
     font-family: 'Source Sans Pro',sans-serif;
-    letter-spacing: .4px;
+    letter-spacing: .8px;
+    word-spacing: .14em;
     font-weight: 500;
     
 }
 #search-input::placeholder {
-
     font-family: 'Source Sans Pro', sans-serif;
-    color: gray;
+    color: rgb(160, 160, 160);
 }
 
 #search-input:focus {
-
     outline: none; 
 }

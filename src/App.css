@@ -2,14 +2,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;  
-
+  flex-direction: column; 
+  width: 100vw;
+  min-height: 100vh;
 }
 
 
 header {
-  width: 100%;
+  width: 100vw;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to left , rgba(160, 160, 160, 1),rgba(210, 210, 210, 1) );
+  position: fixed;
+  z-index: 2;
+  top: 0%;
+  
+}
+
+
+#sort-filter {
+  display: flex;
+  justify-content: left;
+  width: 75%;
+  height: 35%;
+  gap: 2rem;
+}
+
+#no-news {
+  justify-self: center;
+  align-self: center;
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0, .2);
+  font-weight: 600;
 }

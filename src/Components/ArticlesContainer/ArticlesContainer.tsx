@@ -1,15 +1,20 @@
+import { ArticleType } from '../../App';
 import Article from '../Article/Article';
 import './ArticlesContainer.css';
 
 interface Props {
-  articles: any[] | undefined;
+  searchResults: { status: string; totalResults: number; articles: [ArticleType] | undefined };
+  searchSubmited: string | undefined;
+  pageSize: number;
+  currentPage: number;
 }
 
-const ArticlesContainer = ({ articles }: Props) => {
+const ArticlesContainer = ({ searchResults, pageSize, currentPage }: Props) => {
   return (
     <main>
-      {articles?.map((article) => {
-        return <Article data={article} />;
+      {searchResults?.articles?.map((article, i) => {
+        if (i + 1 <= pageSize * currentPage && i + 1 > pageSize * currentPage - pageSize)
+          return <Article key={i} data={article} />;
       })}
     </main>
   );

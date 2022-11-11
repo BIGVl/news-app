@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
+import { ArticleType } from '../../App';
 import fetchFunctions from '../../fetchFunctions';
 import './Search.css';
 
 interface Props {
-  setSearchResults: (value: { status: string; totalResults: number; articles: any[] }) => void;
+  setSearchResults: (value: { status: string; totalResults: number; articles: [ArticleType] }) => void;
+  setSearchSubmited: (value: string) => void;
 }
 
-const Search = ({ setSearchResults }: Props) => {
+const Search = ({ setSearchResults, setSearchSubmited }: Props) => {
+  const [inputValue, setInputValue] = useState<string>('');
   const fetching = fetchFunctions();
-  const [searchInput, setSearchInput] = useState<string>();
 
   //Submit search by pressing the enter while on input
   const keyUp = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    if (e.key === 'Enter' && searchInput) {
-      const results = await fetching.byWordsInTitle(searchInput);
+    if (e.key === 'Enter' && inputValue) {
+      setSearchSubmited(inputValue);
+      const results = await fetching.byWordsInTitle(inputValue);
       setSearchResults(results);
+      console.log(results);
     }
   };
 
   //Save the user's search in a state to use it to call the API
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput((e.target as HTMLInputElement).value);
+    setInputValue((e.target as HTMLInputElement).value);
   };
 
   return (
