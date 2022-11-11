@@ -13,10 +13,9 @@ const Search = ({ setSearchResults, setSearchSubmited }: Props) => {
   const fetching = fetchFunctions();
 
   //Submit search by pressing the enter while on input
-  const keyUp = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e.key);
-    if (e.key === 'Enter' && inputValue) {
+    if (inputValue) {
       setSearchSubmited(inputValue);
       const results = await fetching.byWordsInTitle(inputValue);
       setSearchResults(results);
@@ -30,9 +29,8 @@ const Search = ({ setSearchResults, setSearchSubmited }: Props) => {
   };
 
   return (
-    <div id="search-container">
+    <form id="search-container" onSubmit={submit}>
       <input
-        onKeyUp={keyUp}
         onChange={change}
         type="search"
         name="search"
@@ -40,7 +38,7 @@ const Search = ({ setSearchResults, setSearchSubmited }: Props) => {
         placeholder="Keywords in title..."
         aria-label="search"
       />
-    </div>
+    </form>
   );
 };
 
